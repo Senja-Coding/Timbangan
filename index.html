@@ -215,6 +215,12 @@ margin-top:10px;
 font-weight:bold;
 line-height:1.3;
 }
+
+#tanggal{
+text-align:center;
+font-size:8px;
+margin-bottom:1px;
+} 
   
 @media(max-width:480px){
 
@@ -306,13 +312,10 @@ flex-direction:column;
 <div id="nota">
 
 <h3 class="judul-nota">NOTA TIMBANGAN</h3>
-
+<div id="tanggal"></div>
 <div class="garis"></div>
-
 <div id="info"></div>
-
 <table id="tabelNota"></table>
-
 <div id="hasilNota"></div>
 
 </div>
@@ -448,7 +451,7 @@ let h="";
 for(let i=0;i<5;i++){
 h+="<th>No</th><th>Kg</th>";
 }
-h+="<th>SB</th>";
+h+="<th>Total</th>";
 header.innerHTML=h;
 tabelNota.appendChild(header);
 
@@ -511,6 +514,24 @@ let bersih = Math.floor(total - potAsli);
 let bayar = Math.floor(bersih * harga);
 let zakat = Math.floor(bayar * 0.025);
 
+  /* TANGGAL DAN JAM */
+
+let now = new Date();
+
+let tgl = now.toLocaleDateString("id-ID",{
+day:"2-digit",
+month:"long",
+year:"numeric"
+});
+
+let jam = now.toLocaleTimeString("id-ID",{
+hour:"2-digit",
+minute:"2-digit"
+});
+
+document.getElementById("tanggal").innerHTML =
+tgl+" - "+jam;
+
 document.getElementById("info").innerHTML=
 
 "<b>Petani :</b> "+penjual+"<br>"+
@@ -518,9 +539,9 @@ document.getElementById("info").innerHTML=
 
 document.getElementById("hasilNota").innerHTML=
 
-"Berat Kotor : "+total+" kg<br>"+
-"Potongan : "+potKg+" kg<br>"+
-"Berat Bersih : "+bersih+" kg<br>";
+"Berat Kotor : "+total+" Kg<br>"+
+"Potongan : "+potKg+" Kg<br>"+
+"Berat Bersih : "+bersih+" Kg<br>";
   /*
 "<b>Total Bayar : Rp "+bayar.toLocaleString()+"</b><br>"+
 "Zakat 2.5% : Rp "+zakat.toLocaleString(); */
@@ -531,7 +552,9 @@ let nota=document.getElementById("nota");
 
 nota.style.visibility="visible";
 
-html2canvas(nota).then(function(canvas){
+html2canvas(nota,{
+scale:4
+}).then(function(canvas){
 
 let link=document.createElement("a");
 link.download="nota_timbangan.png";
