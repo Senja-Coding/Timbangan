@@ -187,7 +187,6 @@ grid-column:auto;
 
 <button onclick="clearData()" class="clear-btn">Clear</button>
 
-<button onclick="cetakNota()" class="print-btn">Cetak Nota</button>  
 
 </div>
 <table>
@@ -204,8 +203,6 @@ grid-column:auto;
 
 <div class="result" id="hasil"></div>
 </div>
-
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>  
 
 <script>
 
@@ -302,13 +299,6 @@ let bayar = Math.floor(bersih * harga);
 /* hitung zakat 2.5% */
 let zakat = Math.floor(bayar * 0.025);
 
-document.getElementById("notaPenjual").innerText =
-document.getElementById("penjual").value;
-
-document.getElementById("notaPembeli").innerText =
-document.getElementById("pembeli").value;  
-
-
 document.getElementById("hasil").innerHTML=
 
 "Total berat : "+total+" kg<br>"+
@@ -333,34 +323,6 @@ document.getElementById("berat").focus();
 }                            
   
 </script>
-
-<script>
-
-function cetakNota(){
-
-let penjual=document.getElementById("penjual").value;
-let pembeli=document.getElementById("pembeli").value;
-
-document.getElementById("notaPenjual").innerText=penjual;
-document.getElementById("notaPembeli").innerText=pembeli;
-
-let area=document.getElementById("nota");
-
-html2canvas(area).then(function(canvas){
-
-let link=document.createElement("a");
-
-link.download="nota-timbangan-bawang.png";
-
-link.href=canvas.toDataURL("image/png");
-
-link.click();
-
-});
-
-}
-
-</script>  
   
 
 </body>
