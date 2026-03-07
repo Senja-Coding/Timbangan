@@ -120,34 +120,44 @@ font-size:10px;
 font-weight:bold;
 }
 
-
 #nota{
-margin-top:30px;
-padding:15px;
-border:1px dashed #999;
-background:white;
-visibility:hidden;
-
-/* ukuran font nota lebih kecil */
-font-size:10px;
-line-height:1.5;
+font-family: Arial, sans-serif;
+font-size:7px;
+width:100%;
 }
 
 #nota table{
-font-size:10px;
+width:100%;
 border-collapse:collapse;
 }
 
-#nota th,
-#nota td{
-padding:2px 4px;
+#nota th{
+border:1px solid #000;
+padding:2px;
+text-align:center;
+font-weight:bold;
+font-size:7px;
+background:#f2f2f2;
 }
 
+#nota td{
+border:1px solid #000;
+padding:2px;
+text-align:center;
+font-size:7px;
+}
 
-#nota h3{
-font-size:10px;
-margin-bottom:5px;
-}  
+#info{
+font-size:8px;
+margin-bottom:4px;
+}
+
+#hasilNota{
+font-size:8px;
+margin-top:4px;
+font-weight:bold;
+}
+
   
 @media(max-width:480px){
 
@@ -234,9 +244,19 @@ flex-direction:column;
 </div>
 
   
+<div id="nota">
+
+<div id="info"></div>
+
+<table id="tabelNota"></table>
+
+<div id="hasilNota"></div>
+
+</div>
+  
 <!-- NOTA -->
 
-<div id="nota">
+<!--<div id="nota">
 
 <h3 style="text-align:center">NOTA TIMBANGAN</h3>
 
@@ -251,7 +271,7 @@ flex-direction:column;
 
 <div class="result" id="hasilNota"></div>
 
-</div>
+</div> -->
 
 <script>
 
@@ -447,8 +467,8 @@ document.getElementById("hasilNota").innerHTML=
 "Total berat : "+total+" kg<br>"+
 "Potongan : "+potKg+" kg<br>"+
 "Berat bersih : "+bersih+" kg<br>"+
-"<b>Total Bayar : Rp "+bayar.toLocaleString()+"</b><br>"+
-"Zakat 2.5% : Rp "+zakat.toLocaleString();
+/* "<b>Total Bayar : Rp "+bayar.toLocaleString()+"</b><br>"+
+"Zakat 2.5% : Rp "+zakat.toLocaleString(); */
 
 /* DOWNLOAD NOTA */
 
