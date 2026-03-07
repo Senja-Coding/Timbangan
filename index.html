@@ -393,14 +393,29 @@ let index = r*kolom + c;
 
 if(index < data.length){
 
-isi += "<td>"+(index+1)+"</td><td>"+data[index]+"</td>";
-
 subtotal += data[index];
 hitung++;
 
+isi += "<td>"+(index+1)+"</td><td>"+data[index]+"</td>";
+
+/* tampilkan subtotal di samping kanan setiap 5 timbangan */
+
+if(hitung==5){
+
+isi += "<td style='background:#dff0d8;font-weight:bold'>Sub : "+subtotal+" kg</td>";
+
+subtotal=0;
+hitung=0;
+
 }else{
 
-isi += "<td></td><td></td>";
+isi += "<td></td>";
+
+}
+
+}else{
+
+isi += "<td></td><td></td><td></td>";
 
 }
 
@@ -409,32 +424,17 @@ isi += "<td></td><td></td>";
 tr.innerHTML=isi;
 tabelNota.appendChild(tr);
 
-/* tampilkan subtotal setiap 5 timbangan */
-
-if(hitung>=5){
-
-let trSub=document.createElement("tr");
-
-trSub.innerHTML="<td colspan='"+(kolom*2)+"' style='background:#dff0d8;font-weight:bold'>Subtotal 5 Timbangan : "+subtotal+" kg</td>";
-
-tabelNota.appendChild(trSub);
-
-subtotal=0;
-hitung=0;
-
 }
 
-}
-
-/* subtotal jika sisa data kurang dari 5 */
+/* jika sisa timbangan kurang dari 5 */
 
 if(hitung>0){
 
-let trSub=document.createElement("tr");
+let tr=document.createElement("tr");
 
-trSub.innerHTML="<td colspan='"+(kolom*2)+"' style='background:#dff0d8;font-weight:bold'>Subtotal : "+subtotal+" kg</td>";
+tr.innerHTML="<td colspan='"+(kolom*3)+"' style='background:#dff0d8;font-weight:bold'>Subtotal sisa : "+subtotal+" kg</td>";
 
-tabelNota.appendChild(trSub);
+tabelNota.appendChild(tr);
 
 }
 
