@@ -246,7 +246,7 @@ flex-direction:column;
 </div>
 
 <div class="form-group">
-<label>Pembeli</label>
+<label>Pedagang</label>
 <input type="text" id="pembeli">
 </div>
 
@@ -422,7 +422,7 @@ let zakat = Math.floor(bayar * 0.025);
 
 document.getElementById("hasil").innerHTML=
 
-"Total berat : "+total+" kg<br>"+
+"Berat Kotor : "+total+" kg<br>"+
 "Potongan : "+potKg+" kg<br>"+
 "Berat bersih : "+bersih+" kg<br>"+
 "<span class='totalbayar'>Total Bayar : Rp "+bayar.toLocaleString()+"</span><br><br>"+
@@ -445,7 +445,7 @@ let h="";
 for(let i=0;i<5;i++){
 h+="<th>Tim</th><th>Ber</th>";
 }
-h+="<th>Total</th>";
+h+="<th>Tot</th>";
 header.innerHTML=h;
 tabelNota.appendChild(header);
 
@@ -510,14 +510,14 @@ let zakat = Math.floor(bayar * 0.025);
 
 document.getElementById("info").innerHTML=
 
-"<b>Penjual :</b> "+penjual+"<br>"+
-"<b>Pembeli :</b> "+pembeli+"<br><br>";
+"<b>Petani :</b> "+penjual+"<br>"+
+"<b>Pedagang :</b> "+pembeli+"<br><br>";
 
 document.getElementById("hasilNota").innerHTML=
 
-"Total berat : "+total+" kg<br>"+
+"Berat Kotor : "+total+" kg<br>"+
 "Potongan : "+potKg+" kg<br>"+
-"Berat bersih : "+bersih+" kg<br>";
+"Berat Bersih : "+bersih+" kg<br>";
   /*
 "<b>Total Bayar : Rp "+bayar.toLocaleString()+"</b><br>"+
 "Zakat 2.5% : Rp "+zakat.toLocaleString(); */
