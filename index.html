@@ -92,7 +92,7 @@ table{
 width:100%;
 border-collapse:collapse;
 margin-top:20px;
-font-size:15px;
+font-size:20px;
 }
 
 th,td{
@@ -165,14 +165,14 @@ padding:15px;
 border:1px dashed #999;
 background:#ffffff;
 visibility:hidden;
-font-size:16px;
+/*font-size:16px;*/
 line-height:1.5;
 }
 
 .judul-nota{
 text-align:center;
 margin:2px 0;
-font-size:30px;
+font-size:20px;
 }
 
 .garis{
@@ -183,7 +183,7 @@ margin:2px 0 4px 0;
 }
 
 #info{
-font-size:16px;
+font-size:14px;
 font-weight: bold;
 margin-bottom:1px;
 line-height:1.2;
@@ -210,7 +210,7 @@ padding:2px;
 }
 
 #hasilNota{
-font-size:16px;
+font-size:14px;
 margin-top:10px;
 font-weight:bold;
 line-height:1.3;
@@ -218,7 +218,7 @@ line-height:1.3;
 
 #tanggal{
 text-align:center;
-font-size:8px;
+font-size:12px;
 margin-bottom:1px;
 } 
   
@@ -467,11 +467,11 @@ for(let i=0;i<data.length;i++){
 subtotal += data[i];
 hitung++;
 
-isi += "<td style=';font-size:12px;'>Ke-"+(i+1)+"</td><td style='font-weight:bold;font-size:16px;'>"+data[i]+" Kg</td>";
+isi += "<td style=';font-size:11px;'>Ke-"+(i+1)+"</td><td style='font-weight:bold;font-size:12px;'>"+data[i]+" Kg</td>";
 
 if(hitung==5){
 
-isi += "<td style='font-weight:bold;font-size:18px;background:#66ff66'>"+subtotal+" Kg</td>";
+isi += "<td style='font-weight:bold;font-size:14px;background:#66ff66'>"+subtotal+" Kg</td>";
 
 tr.innerHTML=isi;
 tabelNota.appendChild(tr);
@@ -493,7 +493,7 @@ for(let i=hitung;i<5;i++){
 isi += "<td></td><td></td>";
 }
 
-isi += "<td style='font-weight:bold;font-size:18px;background:#66ff66'>"+subtotal+" Kg</td>";
+isi += "<td style='font-weight:bold;font-size:14px;background:#66ff66'>"+subtotal+" Kg</td>";
 
 tr.innerHTML=isi;
 tabelNota.appendChild(tr);
