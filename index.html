@@ -454,8 +454,8 @@ let harga=document.getElementById("harga").value || 0;
 let potAsli = total*(pot/100);
 let potKg = Math.floor(potAsli);
 let bersih = Math.floor(total - potAsli);
-let bayar = Math.floor(bersih * harga);
-let zakat = Math.floor(bayar * 0.025);
+/*let bayar = Math.floor(bersih * harga);*/
+/*let zakat = Math.floor(bayar * 0.025);*/
 
 document.getElementById("info").innerHTML=
 
@@ -476,7 +476,9 @@ let nota=document.getElementById("nota");
 
 nota.style.visibility="visible";
 
-html2canvas(nota).then(function(canvas){
+html2canvas(nota,{
+scale:3
+}).then(function(canvas){
 
 let link=document.createElement("a");
 link.download="nota_timbangan.png";
