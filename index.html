@@ -31,8 +31,6 @@ text-align:center;
 margin-bottom:20px;
 }
 
-/* FORM */
-
 .form-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -60,8 +58,6 @@ font-size:16px;
 grid-column:1/3;
 }
 
-/* TOMBOL */
-
 button{
 padding:12px;
 border:none;
@@ -72,17 +68,11 @@ border-radius:8px;
 cursor:pointer;
 width:100%;
 height:45px;
-box-sizing:border-box;
-}
-
-button:hover{
-background:#1a68d1;
 }
 
 .button-group{
 display:flex;
 gap:10px;
-width:100%;
 }
 
 .button-group button{
@@ -93,19 +83,9 @@ flex:1;
 background:#e74c3c;
 }
 
-.clear-btn:hover{
-background:#c0392b;
-}
-
 .print-btn{
 background:#27ae60;
 }
-
-.print-btn:hover{
-background:#1e8449;
-}
-
-/* TABEL */
 
 table{
 width:100%;
@@ -116,7 +96,7 @@ font-size:15px;
 
 th,td{
 border:1px solid #ddd;
-padding:8px;
+padding:6px;
 text-align:center;
 }
 
@@ -129,8 +109,6 @@ background:#dff0d8;
 font-weight:bold;
 }
 
-/* HASIL */
-
 .result{
 margin-top:20px;
 font-size:15px;
@@ -142,8 +120,6 @@ font-size:18px;
 font-weight:bold;
 }
 
-/* NOTA */
-
 #nota{
 margin-top:30px;
 padding:15px;
@@ -151,8 +127,6 @@ border:1px dashed #999;
 background:white;
 visibility:hidden;
 }
-
-/* RESPONSIVE HP */
 
 @media(max-width:480px){
 
@@ -166,11 +140,6 @@ grid-column:auto;
 
 .button-group{
 flex-direction:column;
-}
-
-button{
-height:50px;
-font-size:17px;
 }
 
 }
@@ -216,7 +185,6 @@ font-size:17px;
 <button onclick="tambah()">Tambah Timbangan</button>
 
 <button onclick="location.reload()" class="clear-btn">Clear</button>
-  
 
 <button onclick="cetakData()" class="print-btn">Cetak Nota</button>
 
@@ -242,7 +210,7 @@ font-size:17px;
 <div class="result" id="hasil"></div>
 
 
-<!-- NOTA CETAK -->
+<!-- NOTA -->
 
 <div id="nota">
 
@@ -254,8 +222,10 @@ font-size:17px;
 
 <thead>
 <tr>
-<th>No</th>
-<th>Berat</th>
+<th>No</th><th>Kg</th>
+<th>No</th><th>Kg</th>
+<th>No</th><th>Kg</th>
+<th>No</th><th>Kg</th>
 </tr>
 </thead>
 
@@ -383,15 +353,33 @@ let penjual=document.getElementById("penjual").value;
 let pembeli=document.getElementById("pembeli").value;
 
 let tabelNota=document.getElementById("tabelNota");
-
 tabelNota.innerHTML="";
 
-for(let i=0;i<data.length;i++){
+let kolom = 4;
+let baris = Math.ceil(data.length / kolom);
+
+for(let r=0;r<baris;r++){
 
 let tr=document.createElement("tr");
+let isi="";
 
-tr.innerHTML="<td>"+(i+1)+"</td><td>"+data[i]+" kg</td>";
+for(let c=0;c<kolom;c++){
 
+let index = r*kolom + c;
+
+if(index < data.length){
+
+isi += "<td>"+(index+1)+"</td><td>"+data[index]+" kg</td>";
+
+}else{
+
+isi += "<td></td><td></td>";
+
+}
+
+}
+
+tr.innerHTML=isi;
 tabelNota.appendChild(tr);
 
 }
@@ -423,8 +411,7 @@ document.getElementById("hasilNota").innerHTML=
 
 let nota = document.getElementById("nota");
 
-/* tampilkan sementara */
-nota.style.visibility = "visible";
+nota.style.visibility="visible";
 
 html2canvas(nota).then(function(canvas){
 
@@ -433,7 +420,6 @@ link.download="nota_timbangan.png";
 link.href=canvas.toDataURL("image/png");
 link.click();
 
-/* sembunyikan lagi */
 nota.style.visibility="hidden";
 
 });
