@@ -149,11 +149,7 @@ margin-top:30px;
 padding:15px;
 border:1px dashed #999;
 background:white;
-
-/* disembunyikan dari layar */
-opacity:0;
-position:absolute;
-left:-9999px;
+visibility:hidden;
 }
 
 /* RESPONSIVE HP */
@@ -425,18 +421,23 @@ document.getElementById("hasilNota").innerHTML=
 "<b>Total Bayar : Rp "+bayar.toLocaleString()+"</b><br>"+
 "Zakat 2.5% : Rp "+zakat.toLocaleString();
 
+let nota = document.getElementById("nota");
 
-html2canvas(document.getElementById("nota")).then(function(canvas){
+/* tampilkan sementara */
+nota.style.visibility = "visible";
+
+html2canvas(nota).then(function(canvas){
 
 let link=document.createElement("a");
-
 link.download="nota_timbangan.png";
-
 link.href=canvas.toDataURL("image/png");
-
 link.click();
 
+/* sembunyikan lagi */
+nota.style.visibility="hidden";
+
 });
+
 }
 
 </script>
