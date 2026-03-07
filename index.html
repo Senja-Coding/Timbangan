@@ -222,6 +222,13 @@ font-size:11px;
 margin-top:-5px;
 margin-bottom:1px;
 } 
+
+.berat-satuan{
+font-size:5px;
+margin-left:1px;
+}
+
+  
   
 @media(max-width:480px){
 
@@ -468,11 +475,11 @@ for(let i=0;i<data.length;i++){
 subtotal += data[i];
 hitung++;
 
-isi += "<td style=';font-size:8px;'>"+(i+1)+"</td><td style='font-weight:bold;font-size:9px;'>"+data[i]+"</td>";
+isi += "<td style=';font-size:8px;'>"+(i+1)+"</td><td style='font-weight:bold;font-size:9px;'>"+data[i]+"span class='berat-satuan'>kg</span></td></td>";
 
 if(hitung==5){
 
-isi += "<td style='font-weight:bold;font-size:8px;background:#f2f2f2'>"+subtotal+"kg</td>";
+isi += "<td style='font-weight:bold;font-size:9px;background:#f2f2f2'>"+subtotal+"span class='berat-satuan'>kg</span></td></td>";
 
 tr.innerHTML=isi;
 tabelNota.appendChild(tr);
@@ -494,7 +501,7 @@ for(let i=hitung;i<5;i++){
 isi += "<td></td><td></td>";
 }
 
-isi += "<td style='font-weight:bold;font-size:8px;background:#f2f2f2'>"+subtotal+"kg</td>";
+isi += "<td style='font-weight:bold;font-size:9px;background:#f2f2f2'>"+subtotal+"span class='berat-satuan'>kg</span></td></td>";
 
 tr.innerHTML=isi;
 tabelNota.appendChild(tr);
