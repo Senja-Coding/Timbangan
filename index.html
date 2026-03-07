@@ -255,23 +255,26 @@ data.forEach(v=>total+=v);
 let pot=document.getElementById("potongan").value || 0;
 let harga=document.getElementById("harga").value || 0;
 
-let potAsli=total*(pot/100);
+let potAsli = total*(pot/100);
+let potKg = Math.floor(potAsli);
 
-let potKg=Math.floor(potAsli);
+let bersih = Math.floor(total - potAsli);
 
-let bersih=Math.floor(total-potAsli);
+let bayar = Math.floor(bersih * harga);
 
-let bayar=Math.floor(bersih*harga);
+/* hitung zakat 2.5% */
+let zakat = Math.floor(bayar * 0.025);
 
 document.getElementById("hasil").innerHTML=
 
 "Total berat : "+total+" kg<br>"+
 "Potongan : "+potKg+" kg<br>"+
 "Berat bersih : "+bersih+" kg<br>"+
-"<span class='totalbayar'>Total Bayar : Rp "+bayar.toLocaleString()+"</span>";
+"<span class='totalbayar'>Total Bayar : Rp "+bayar.toLocaleString()+"</span><br><br>"+
+"<b>Total Keluar Zakat : Rp "+zakat.toLocaleString()+"</b>";
 
 }
-
+  
 </script>
 
 </body>
