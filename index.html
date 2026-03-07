@@ -368,7 +368,7 @@ document.getElementById("hasil").innerHTML=
 
 }
 
-  function cetakData(){
+function cetakData(){
 
 let penjual=document.getElementById("penjual").value;
 let pembeli=document.getElementById("pembeli").value;
@@ -376,62 +376,63 @@ let pembeli=document.getElementById("pembeli").value;
 let tabelNota=document.getElementById("tabelNota");
 tabelNota.innerHTML="";
 
-let kolom = 5;
-let baris = Math.ceil(data.length / kolom);
+/* HEADER */
 
-let subtotal = 0;
-let hitung = 0;
+let header=document.createElement("tr");
+let h="";
+for(let i=0;i<5;i++){
+h+="<th>No</th><th>Kg</th>";
+}
+h+="<th>Sub</th>";
+header.innerHTML=h;
+tabelNota.appendChild(header);
 
-for(let r=0;r<baris;r++){
+/* DATA */
 
+let subtotal=0;
+let hitung=0;
 let tr=document.createElement("tr");
 let isi="";
 
-for(let c=0;c<kolom;c++){
+for(let i=0;i<data.length;i++){
 
-let index = r*kolom + c;
-
-if(index < data.length){
-
-subtotal += data[index];
+subtotal += data[i];
 hitung++;
 
-let nilai = data[index];
-
-/* jika sudah 5 timbangan tampilkan subtotal di kolom kg terakhir */
+isi += "<td>"+(i+1)+"</td><td>"+data[i]+"</td>";
 
 if(hitung==5){
-nilai = subtotal;
-subtotal = 0;
-hitung = 0;
+
+isi += "<td style='font-weight:bold;background:#dff0d8'>"+subtotal+"</td>";
+
+tr.innerHTML=isi;
+tabelNota.appendChild(tr);
+
+tr=document.createElement("tr");
+isi="";
+subtotal=0;
+hitung=0;
+
 }
 
-isi += "<td>"+(index+1)+"</td><td>"+nilai+"</td>";
+}
 
-}else{
+/* jika sisa timbangan kurang dari 5 */
 
+if(hitung>0){
+
+for(let i=hitung;i<5;i++){
 isi += "<td></td><td></td>";
-
 }
 
-}
+isi += "<td style='font-weight:bold;background:#dff0d8'>"+subtotal+"</td>";
 
 tr.innerHTML=isi;
 tabelNota.appendChild(tr);
 
 }
 
-/* subtotal sisa jika data tidak genap 5 */
-
-if(hitung>0){
-
-let tr=document.createElement("tr");
-
-tr.innerHTML="<td colspan='"+(kolom*2)+"' style='font-weight:bold;text-align:right'>"+subtotal+" kg</td>";
-
-tabelNota.appendChild(tr);
-
-}
+/* TOTAL */
 
 let total=0;
 data.forEach(v=>total+=v);
@@ -458,7 +459,9 @@ document.getElementById("hasilNota").innerHTML=
 "<b>Total Bayar : Rp "+bayar.toLocaleString()+"</b><br>"+
 "Zakat 2.5% : Rp "+zakat.toLocaleString();
 
-let nota = document.getElementById("nota");
+/* DOWNLOAD NOTA */
+
+let nota=document.getElementById("nota");
 
 nota.style.visibility="visible";
 
@@ -473,7 +476,7 @@ nota.style.visibility="hidden";
 
 });
 
-}
+}  
 
 </script>
 
