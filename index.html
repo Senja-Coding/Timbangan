@@ -151,7 +151,7 @@ grid-column:auto;
 
 <div class="container">
 
-<h2>Aplikasi Timbangan Bawang</h2>
+<h2>Aplikasi Timbangan Panen</h2>
 
 <div class="form-grid">
 
@@ -329,6 +329,13 @@ let bayar = Math.floor(bersih * harga);
 /* hitung zakat 2.5% */
 let zakat = Math.floor(bayar * 0.025);
 
+document.getElementById("notaPenjual").innerText =
+document.getElementById("penjual").value;
+
+document.getElementById("notaPembeli").innerText =
+document.getElementById("pembeli").value;  
+
+
 document.getElementById("hasil").innerHTML=
 
 "Total berat : "+total+" kg<br>"+
@@ -337,11 +344,6 @@ document.getElementById("hasil").innerHTML=
 "<span class='totalbayar'>Total Bayar : Rp "+bayar.toLocaleString()+"</span><br><br>"+
 "<b>Total Keluar Zakat : Rp "+zakat.toLocaleString()+"</b>";
 
-document.getElementById("notaPenjual").innerText =
-document.getElementById("penjual").value;
-
-document.getElementById("notaPembeli").innerText =
-document.getElementById("pembeli").value;  
 
 }
 
