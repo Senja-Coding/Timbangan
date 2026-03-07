@@ -108,6 +108,20 @@ font-size:18px;
 font-weight:bold;
 }
 
+
+.button-group{
+display:flex;
+gap:10px;
+}
+
+.clear-btn{
+background:#e74c3c;
+}
+
+.clear-btn:hover{
+background:#c0392b;
+}  
+
 /* responsive kecil */
 
 @media(max-width:480px){
@@ -148,8 +162,14 @@ grid-column:auto;
 <input type="number" id="berat">
 </div>
 
-<div class="full">
+<div class="button-group full">
+
 <button onclick="tambah()">Tambah Timbangan</button>
+
+<button onclick="clearData()" class="clear-btn">Clear</button>
+
+</div>
+
 </div>
 
 </div>
@@ -274,6 +294,18 @@ document.getElementById("hasil").innerHTML=
 "<b>Total Keluar Zakat : Rp "+zakat.toLocaleString()+"</b>";
 
 }
+
+function clearData(){
+
+data=[];
+
+document.getElementById("tabel").innerHTML="";
+document.getElementById("hasil").innerHTML="";
+
+document.getElementById("berat").value="";
+document.getElementById("berat").focus();
+
+}                            
   
 </script>
 
