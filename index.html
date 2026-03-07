@@ -368,7 +368,7 @@ document.getElementById("hasil").innerHTML=
 
 }
 
-function cetakData(){
+  function cetakData(){
 
 let penjual=document.getElementById("penjual").value;
 let pembeli=document.getElementById("pembeli").value;
@@ -396,26 +396,21 @@ if(index < data.length){
 subtotal += data[index];
 hitung++;
 
-isi += "<td>"+(index+1)+"</td><td>"+data[index]+"</td>";
+let nilai = data[index];
 
-/* tampilkan subtotal di samping kanan setiap 5 timbangan */
+/* jika sudah 5 timbangan tampilkan subtotal di kolom kg terakhir */
 
 if(hitung==5){
-
-isi += "<td style='background:#dff0d8;font-weight:bold'>Sub : "+subtotal+" kg</td>";
-
-subtotal=0;
-hitung=0;
-
-}else{
-
-isi += "<td></td>";
-
+nilai = subtotal;
+subtotal = 0;
+hitung = 0;
 }
 
+isi += "<td>"+(index+1)+"</td><td>"+nilai+"</td>";
+
 }else{
 
-isi += "<td></td><td></td><td></td>";
+isi += "<td></td><td></td>";
 
 }
 
@@ -426,13 +421,13 @@ tabelNota.appendChild(tr);
 
 }
 
-/* jika sisa timbangan kurang dari 5 */
+/* subtotal sisa jika data tidak genap 5 */
 
 if(hitung>0){
 
 let tr=document.createElement("tr");
 
-tr.innerHTML="<td colspan='"+(kolom*3)+"' style='background:#dff0d8;font-weight:bold'>Subtotal sisa : "+subtotal+" kg</td>";
+tr.innerHTML="<td colspan='"+(kolom*2)+"' style='font-weight:bold;text-align:right'>"+subtotal+" kg</td>";
 
 tabelNota.appendChild(tr);
 
@@ -479,7 +474,6 @@ nota.style.visibility="hidden";
 });
 
 }
-
 
 </script>
 
