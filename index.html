@@ -449,13 +449,13 @@ let total=0;
 data.forEach(v=>total+=v);
 
 let pot=document.getElementById("potongan").value || 0;
-/*let harga=document.getElementById("harga").value || 0;*/
+// let harga=document.getElementById("harga").value || 0;
 
 let potAsli = total*(pot/100);
 let potKg = Math.floor(potAsli);
 let bersih = Math.floor(total - potAsli);
-/*let bayar = Math.floor(bersih * harga);*/
-/*let zakat = Math.floor(bayar * 0.025);*/
+// let bayar = Math.floor(bersih * harga);
+// let zakat = Math.floor(bayar * 0.025);
 
 document.getElementById("info").innerHTML=
 
@@ -467,8 +467,8 @@ document.getElementById("hasilNota").innerHTML=
 "Total berat : "+total+" kg<br>"+
 "Potongan : "+potKg+" kg<br>"+
 "Berat bersih : "+bersih+" kg<br>"+
-/* "<b>Total Bayar : Rp "+bayar.toLocaleString()+"</b><br>"+
-"Zakat 2.5% : Rp "+zakat.toLocaleString(); */
+// "<b>Total Bayar : Rp "+bayar.toLocaleString()+"</b><br>"+
+// "Zakat 2.5% : Rp "+zakat.toLocaleString();
 
 /* DOWNLOAD NOTA */
 
