@@ -111,12 +111,12 @@ font-weight:bold;
 
 .result{
 margin-top:20px;
-font-size:10px;
+font-size:12px;
 line-height:1.6;
 }
 
 .totalbayar{
-font-size:10px;
+font-size:12px;
 font-weight:bold;
 }
 
@@ -370,18 +370,14 @@ tabelNota.innerHTML="";
 
 let header=document.createElement("tr");
 let h="";
-
 for(let i=0;i<5;i++){
 h+="<th>No</th><th>Kg</th>";
 }
-
 h+="<th>Sub</th>";
-
 header.innerHTML=h;
 tabelNota.appendChild(header);
 
-
-/* DATA TIMBANGAN */
+/* DATA */
 
 let subtotal=0;
 let hitung=0;
@@ -393,11 +389,11 @@ for(let i=0;i<data.length;i++){
 subtotal += data[i];
 hitung++;
 
-isi += "<td>"+(i+1)+"</td><td>"+data[i]+" Kg</td>";
+isi += "<td>"+(i+1)+"</td><td>"+data[i]+"</td>";
 
 if(hitung==5){
 
-isi += "<td style='font-weight:bold;background:#dff0d8'>"+subtotal+" Kg</td>";
+isi += "<td style='font-weight:bold;background:#dff0d8'>"+subtotal+"</td>";
 
 tr.innerHTML=isi;
 tabelNota.appendChild(tr);
@@ -411,7 +407,6 @@ hitung=0;
 
 }
 
-
 /* jika sisa timbangan kurang dari 5 */
 
 if(hitung>0){
@@ -420,58 +415,45 @@ for(let i=hitung;i<5;i++){
 isi += "<td></td><td></td>";
 }
 
-isi += "<td style='font-weight:bold;background:#dff0d8'>"+subtotal+" Kg</td>";
+isi += "<td style='font-weight:bold;background:#dff0d8'>"+subtotal+"</td>";
 
 tr.innerHTML=isi;
 tabelNota.appendChild(tr);
 
 }
 
-
-/* PERHITUNGAN TOTAL */
+/* TOTAL */
 
 let total=0;
 data.forEach(v=>total+=v);
 
 let pot=document.getElementById("potongan").value || 0;
-// let harga=document.getElementById("harga").value || 0;
+let harga=document.getElementById("harga").value || 0;
 
 let potAsli = total*(pot/100);
 let potKg = Math.floor(potAsli);
 let bersih = Math.floor(total - potAsli);
-
-// let bayar = Math.floor(bersih * harga);
-// let zakat = Math.floor(bayar * 0.025);
-
-
-/* INFO NOTA */
+let bayar = Math.floor(bersih * harga);
+let zakat = Math.floor(bayar * 0.025);
 
 document.getElementById("info").innerHTML=
 
-"<b>Petani :</b> "+penjual+"<br>"+
+"<b>Penjual :</b> "+penjual+"<br>"+
 "<b>Pembeli :</b> "+pembeli+"<br><br>";
-
-
-/* HASIL NOTA */
 
 document.getElementById("hasilNota").innerHTML=
 
 "Total berat : "+total+" kg<br>"+
 "Potongan : "+potKg+" kg<br>"+
-"Berat bersih : "+bersih+" kg";
-
-
-/* kode lama (disimpan sebagai referensi)
-
+"Berat bersih : "+bersih+" kg<br>"+
 "<b>Total Bayar : Rp "+bayar.toLocaleString()+"</b><br>"+
 "Zakat 2.5% : Rp "+zakat.toLocaleString();
-
-*/
-
 
 /* DOWNLOAD NOTA */
 
 let nota=document.getElementById("nota");
+
+nota.style.visibility="visible";
 
 html2canvas(nota).then(function(canvas){
 
@@ -480,10 +462,12 @@ link.download="nota_timbangan.png";
 link.href=canvas.toDataURL("image/png");
 link.click();
 
+nota.style.visibility="hidden";
+
 });
 
 }
-
+  
 </script>
 
 </body>
