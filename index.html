@@ -376,13 +376,27 @@ document.getElementById("hasil").innerHTML=
 
 function clearData(){
 
-data=[];
+// kosongkan data timbangan
+dataTimbangan = [];
 
-document.getElementById("tabel").innerHTML="";
-document.getElementById("hasil").innerHTML="";
+// kosongkan tabel
+document.getElementById("tabelBody").innerHTML = "";
 
-document.getElementById("berat").value="";
-document.getElementById("berat").focus();
+// reset total
+document.getElementById("totalKotor").innerText = "0";
+document.getElementById("totalBersih").innerText = "0";
+document.getElementById("totalBayar").innerText = "0";
+document.getElementById("totalZakat").innerText = "0";
+
+// kosongkan input pembeli dan penjual
+document.getElementById("pembeli").value = "";
+document.getElementById("penjual").value = "";
+
+// kosongkan input timbangan
+document.getElementById("berat").value = "";
+
+// hapus tampilan nota
+document.getElementById("nota").innerHTML = "";
 
 }
 
