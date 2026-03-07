@@ -122,6 +122,14 @@ background:#e74c3c;
 background:#c0392b;
 }  
 
+.print-btn{
+background:#27ae60;
+}
+
+.print-btn:hover{
+background:#1e8449;
+}  
+
 /* responsive kecil */
 
 @media(max-width:480px){
@@ -148,6 +156,17 @@ grid-column:auto;
 <div class="form-grid">
 
 <div class="form-group">
+<label>Nama Penjual</label>
+<input type="text" id="penjual">
+</div>
+
+<div class="form-group">
+<label>Nama Pembeli</label>
+<input type="text" id="pembeli">
+</div>
+  
+
+<div class="form-group">
 <label>Harga per Kg</label>
 <input type="number" id="harga">
 </div>
@@ -168,6 +187,8 @@ grid-column:auto;
 
 <button onclick="clearData()" class="clear-btn">Clear</button>
 
+<button onclick="cetakNota()" class="print-btn">Cetak Nota</button>  
+
 </div>
 
 <table>
@@ -185,6 +206,33 @@ grid-column:auto;
 <div class="result" id="hasil"></div>
 
 </div>
+
+<div id="nota">
+
+<h3 style="text-align:center">NOTA TIMBANGAN BAWANG</h3>
+
+<p>
+Penjual : <span id="notaPenjual"></span><br>
+Pembeli : <span id="notaPembeli"></span>
+</p>
+
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>Berat</th>
+</tr>
+</thead>
+
+<tbody id="tabel"></tbody>
+
+</table>
+
+<div class="result" id="hasil"></div>
+
+</div>  
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>  
 
 <script>
 
@@ -289,6 +337,12 @@ document.getElementById("hasil").innerHTML=
 "<span class='totalbayar'>Total Bayar : Rp "+bayar.toLocaleString()+"</span><br><br>"+
 "<b>Total Keluar Zakat : Rp "+zakat.toLocaleString()+"</b>";
 
+document.getElementById("notaPenjual").innerText =
+document.getElementById("penjual").value;
+
+document.getElementById("notaPembeli").innerText =
+document.getElementById("pembeli").value;  
+
 }
 
 function clearData(){
@@ -304,6 +358,29 @@ document.getElementById("berat").focus();
 }                            
   
 </script>
+  
+<script>
+
+function cetakNota(){
+
+let nota=document.getElementById("nota");
+
+html2canvas(nota).then(canvas=>{
+
+let link=document.createElement("a");
+
+link.download="nota-timbangan-bawang.png";
+
+link.href=canvas.toDataURL();
+
+link.click();
+
+});
+
+}
+
+</script>
+  
 
 </body>
 </html>
