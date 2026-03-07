@@ -149,6 +149,11 @@ margin-top:30px;
 padding:15px;
 border:1px dashed #999;
 background:white;
+
+/* disembunyikan dari layar */
+opacity:0;
+position:absolute;
+left:-9999px;
 }
 
 /* RESPONSIVE HP */
@@ -420,18 +425,18 @@ document.getElementById("hasilNota").innerHTML=
 "<b>Total Bayar : Rp "+bayar.toLocaleString()+"</b><br>"+
 "Zakat 2.5% : Rp "+zakat.toLocaleString();
 
+
 html2canvas(document.getElementById("nota")).then(function(canvas){
 
 let link=document.createElement("a");
 
 link.download="nota_timbangan.png";
 
-link.href=canvas.toDataURL();
+link.href=canvas.toDataURL("image/png");
 
 link.click();
 
 });
-
 }
 
 </script>
