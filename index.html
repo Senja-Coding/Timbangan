@@ -360,20 +360,26 @@ document.getElementById("berat").focus();
 }                            
   
 </script>
-  
+
 <script>
 
 function cetakNota(){
 
-let nota=document.getElementById("nota");
+let penjual=document.getElementById("penjual").value;
+let pembeli=document.getElementById("pembeli").value;
 
-html2canvas(nota).then(canvas=>{
+document.getElementById("notaPenjual").innerText=penjual;
+document.getElementById("notaPembeli").innerText=pembeli;
+
+let area=document.getElementById("nota");
+
+html2canvas(area).then(function(canvas){
 
 let link=document.createElement("a");
 
 link.download="nota-timbangan-bawang.png";
 
-link.href=canvas.toDataURL();
+link.href=canvas.toDataURL("image/png");
 
 link.click();
 
@@ -381,7 +387,7 @@ link.click();
 
 }
 
-</script>
+</script>  
   
 
 </body>
