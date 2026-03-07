@@ -214,7 +214,8 @@ font-size:17px;
 
 <button onclick="tambah()">Tambah Timbangan</button>
 
-<button onclick="clearData()" class="clear-btn">Clear</button>
+<button onclick="location.reload()" class="clear-btn">Clear</button>
+  
 
 <button onclick="cetakData()" class="print-btn">Cetak Nota</button>
 
@@ -374,19 +375,6 @@ document.getElementById("hasil").innerHTML=
 
 }
 
-function clearData(){
-
-data=[];
-
-document.getElementById("tabel").innerHTML="";
-document.getElementById("hasil").innerHTML="";
-document.getElementById("tabelNota").innerHTML="";
-document.getElementById("hasilNota").innerHTML="";
-
-document.getElementById("berat").value="";
-document.getElementById("berat").focus();
-
-}
 
 function cetakData(){
 
