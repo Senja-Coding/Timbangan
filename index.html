@@ -431,6 +431,8 @@ let potKg = Math.floor(potAsli);
 let bersih = Math.floor(total - potAsli);
 
 let bayar = Math.floor(bersih * harga);
+  
+let zakatkg = Math.floor(bersih * 0.025);
 
 let zakat = Math.floor(bayar * 0.025);
 
@@ -439,10 +441,10 @@ document.getElementById("hasil").innerHTML=
 "Berat Kotor : "+total+" Kg<br>"+
 "Potongan : "+potKg+" Kg<br>"+
 "Berat bersih : "+bersih+" Kg<br>"+
-"<span class='totalbayar'>Total Bayar : Rp "+bayar.toLocaleString()+"</span><br><br>";
-  /*
+"<span class='totalbayar'>Total Bayar : Rp "+bayar.toLocaleString()+"</span><br><br>"+
+"<b>Total Keluar Zakat : "+zakatkg.toLocaleString()+" Kg</b>"+
 "<b>Total Keluar Zakat : Rp "+zakat.toLocaleString()+"</b>";
-*/
+
 
 }
 
