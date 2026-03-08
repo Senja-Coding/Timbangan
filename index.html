@@ -250,7 +250,7 @@ flex-direction:column;
 <h2>Aplikasi Timbangan Panen</h2>
 
 <div class="form-grid">
-
+<!--
 <div class="form-group">
 <label>Petani</label>
 <input type="text" id="penjual">
@@ -260,7 +260,7 @@ flex-direction:column;
 <label>Pedagang</label>
 <input type="text" id="pembeli">
 </div>
-
+-->
 <div class="form-group">
 <label>Harga per Kg</label>
 <input type="number" id="harga">
@@ -316,7 +316,9 @@ flex-direction:column;
 <h3 class="judul-nota">NOTA TIMBANGAN</h3>
 <div id="tanggal"></div>
 <div class="garis"></div>
+  <!--
 <div id="info"></div>
+  -->
 <table id="tabelNota"></table>
 <div id="hasilNota"></div>
 
@@ -433,16 +435,18 @@ document.getElementById("hasil").innerHTML=
 "Berat Kotor : "+total+" Kg<br>"+
 "Potongan : "+potKg+" Kg<br>"+
 "Berat bersih : "+bersih+" Kg<br>"+
-"<span class='totalbayar'>Total Bayar : Rp "+bayar.toLocaleString()+"</span><br><br>"+
+"<span class='totalbayar'>Total Bayar : Rp "+bayar.toLocaleString()+"</span><br><br>";
+  /*
 "<b>Total Keluar Zakat : Rp "+zakat.toLocaleString()+"</b>";
+*/
 
 }
 
 function cetakData(){
-
+/*
 let penjual=document.getElementById("penjual").value;
 let pembeli=document.getElementById("pembeli").value;
-
+*/
 let tabelNota=document.getElementById("tabelNota");
 tabelNota.innerHTML="";
 
@@ -533,12 +537,11 @@ minute:"2-digit"
 
 document.getElementById("tanggal").innerHTML =
 tgl+" - "+jam;
-
-document.getElementById("info").innerHTML=
-
-"<b>Petani :</b> "+penjual+"<br>"+
+/*
+document.getElementById("info").innerHTML=;
+"<b>Petani :</b> "+penjual+"<br>";
 "<b>Pedagang :</b> "+pembeli+"<br><br>";
-
+*/
 document.getElementById("hasilNota").innerHTML=
 
 "Berat Kotor : "+total+" Kg<br>"+
